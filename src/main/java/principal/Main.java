@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.swing.SwingUtilities;
+
 import modelos.*;
 import servicios.*;
 
@@ -35,6 +37,14 @@ public class Main {
         System.out.println("-------------------");
         soloFechasYEstacion.forEach(System.out::println);
         escritor.escrituraDeArchivoDos("precipitacionesResumen.json", soloFechasYEstacion);
+        SwingUtilities.invokeLater(() -> {
+            Tabla tabla = new Tabla("Precipitaciones");
+        
+        tabla.cargarDatos(lluviasBadajoz);
+        tabla.setVisible(true);
+        });
+       
+       
     }
 
 
